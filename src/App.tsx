@@ -1,8 +1,16 @@
-import { Button } from "./components/ui/button"
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { PublicLayout } from "@/layouts/public-layouts";
+import HomePage from "@/routes/home";
 const App = () => {
   return (
-    <div className="text-red-600 px-12 py-10"> <Button>Click Me</Button> </div>
+    <Router>
+      <Routes>
+      {/* Public routes */}
+        <Route element={<PublicLayout />}>
+        <Route index element={ <HomePage />}/>
+        </Route>
+      </Routes>
+    </Router>
   )
 }
 
