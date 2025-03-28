@@ -1,5 +1,12 @@
 # React + TypeScript + Vite
 
+## Tech Stack
+
+- **Frontend**: React, Tailwind CSS, Redux (optional for state management)
+- **Backend**: Node.js, Express (if needed for API)
+- **AI Integration**: OpenAI API or a custom NLP model
+- **Database**: Firebase, MongoDB, or PostgreSQL (if persistent data is needed)
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
