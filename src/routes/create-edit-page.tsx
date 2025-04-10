@@ -18,6 +18,7 @@ export const CreateEditPage = () => {
             );
             if (interviewDoc.exists()) {
               setInterview({
+                id:interviewDoc.id,
                 ...interviewDoc.data()
               } as Interview);
             }
