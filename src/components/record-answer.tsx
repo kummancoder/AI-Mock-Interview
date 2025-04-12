@@ -63,8 +63,6 @@ export const RecordAnswer = ({
   const { userId } = useAuth();
   const { interviewId } = useParams();
 
-
-  
   const recordUserAnswer = async () => {
     if (isRecording) {
       stopSpeechToText();
@@ -136,7 +134,6 @@ export const RecordAnswer = ({
       setIsAiGenerating(false);
     }
   };
-
 
   const recordNewAnswer = () => {
     setUserAnswer("");
@@ -212,6 +209,12 @@ export const RecordAnswer = ({
   return (
     <div className="w-full flex flex-col items-center gap-8 mt-4">
       {/* save model */}
+      <SaveModal
+        isOpen={open}
+        onClose={() => setOpen(false)}
+        onConfirm={saveUserAnswer}
+        loading={loading}
+      />
 
       <div className="w-full h-[400px] md:w-96 flex flex-col items-center justify-center border p-4 bg-gray-50 rounded-md">
         {isWebCam ? (

@@ -13,7 +13,6 @@ import { cn } from "@/lib/utils";
 import { TooltipButton } from "./tooltip-button";
 import { Eye, Newspaper, Sparkles } from "lucide-react";
 
-
 interface InterviewPinProps {
   interview: Interview;
   onMockPage?: boolean;
@@ -23,11 +22,10 @@ export const InterviewPin = ({
   interview,
   onMockPage = false,
 }: InterviewPinProps) => {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
-
-    const [loading, setLoading] = useState(false);
-    const {userId} = useAuth();
+  const [loading, setLoading] = useState(false);
+  const { userId } = useAuth();
   return (
     <Card className="p-4 rounded-md shadow-none hover:shadow-md shadow-gray-100 cursor-pointer transition-all space-y-4">
       <CardTitle className="text-lg">{interview?.position}</CardTitle>
@@ -103,7 +101,6 @@ export const InterviewPin = ({
             />
           </div>
         )}
-
       </CardFooter>
     </Card>
   );
