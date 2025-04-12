@@ -13,7 +13,6 @@ import { Link } from "react-router-dom";
 import { toast } from "sonner";
 
 export const Dashboard = () => {
-
   const [interviews, setInterviews] = useState<Interview[]>([]);
   const [loading, setLoading] = useState(false);
   const { userId } = useAuth();
@@ -49,8 +48,6 @@ export const Dashboard = () => {
     return () => unsubscribe();
   }, [userId]);
 
-
-
   return (
     <>
       <div className="flex w-full items-center justify-between">
@@ -79,7 +76,6 @@ export const Dashboard = () => {
             <InterviewPin key={interview.id} interview={interview} />
           ))
         ) : (
-          
           <div className="md:col-span-3 w-full flex flex-grow items-center justify-center h-96 flex-col">
             <img
               src="/assets/svg/not-found.svg"

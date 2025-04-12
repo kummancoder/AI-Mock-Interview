@@ -12,50 +12,45 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import WebCam from "react-webcam";
 
 export const MockLoadPage = () => {
+  const { interviewId } = useParams<{ interviewId: string }>();
+  const [interview, setInterview] = useState<Interview | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isWebCamEnabled, setIsWebCamEnabled] = useState(false);
 
-    const { interviewId } = useParams<{ interviewId: string }>();
-    const [interview, setInterview] = useState<Interview | null>(null);
-    const [isLoading, setIsLoading] = useState(false);
-    const [isWebCamEnabled, setIsWebCamEnabled] = useState(false);
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
-
-    useEffect(() => {
-      const fetchInterview = async () => {
-        if (interviewId) {
-          try {
-            const interviewDoc = await getDoc(
-              doc(db, "interviews", interviewId)
-            );
-            if (interviewDoc.exists()) {
-              setInterview({
-                id: interviewDoc.id,
-                ...interviewDoc.data(),
-              } as Interview);
-            }
-          } catch (error) {
-            console.log(error);
+  useEffect(() => {
+    const fetchInterview = async () => {
+      if (interviewId) {
+        try {
+          const interviewDoc = await getDoc(doc(db, "interviews", interviewId));
+          if (interviewDoc.exists()) {
+            setInterview({
+              id: interviewDoc.id,
+              ...interviewDoc.data(),
+            } as Interview);
           }
+        } catch (error) {
+          console.log(error);
         }
-      };
+      }
+    };
 
-      fetchInterview();
-    }, [interviewId, navigate]);
+    fetchInterview();
+  }, [interviewId, navigate]);
 
-    if(isLoading){
-      return <LoaderPage className="w-full h-[70vh" />
-    }
+  if (isLoading) {
+    return <LoaderPage className="w-full h-[70vh" />;
+  }
 
-    if (!interviewId) {
-      navigate("/generate", { replace: true });
-    }
+  if (!interviewId) {
+    navigate("/generate", { replace: true });
+  }
 
-    if (!interview) {
-      navigate("/generate", { replace: true });
-    }
+  if (!interview) {
+    navigate("/generate", { replace: true });
+  }
 
-
-    
   return (
     <div className="flex flex-col w-full gap-8">
       <div className="flex items-center justify-between w-full gap-2">
@@ -109,4 +104,4 @@ export const MockLoadPage = () => {
       </div>
     </div>
   );
-}
+};

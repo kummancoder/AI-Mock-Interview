@@ -1,11 +1,3 @@
-// import { z } from "zod";
-// import { zodResolver } from "@hookform/resolvers/zod";
-// import { FormProvider, useForm } from "react-hook-form";
-// import { Interview } from "@/types";
-// import { CustomBreadCrumb } from "./custom-bread-crumb";
-// import { useEffect, useState } from "react";
-// import { toast } from "sonner";
-
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FormProvider, useForm } from "react-hook-form";
@@ -114,12 +106,6 @@ export const FormMockInterview = ({ initialData }: FormMockInterviewProps) => {
 
         The questions should assess skills in ${data?.techStack} development and best practices, problem-solving, and experience handling complex requirements. Please format the output strictly as an array of JSON objects without any additional labels, code blocks, or explanations. Return only the JSON array with questions and answers.
         `;
-
-      //  const aiResult = await chatSession.sendMessage(prompt);
-      //  const cleanedResponse = cleanAiResponse(aiResult.response.text());
-      // console.log(aiResult.response.text().trim());
-
-      //  return cleanedResponse;
 
        const aiResult = await chatSession.sendMessage(prompt);
        const cleanedResponse = cleanAiResponse(aiResult.response.text());
