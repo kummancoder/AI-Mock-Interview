@@ -24,8 +24,8 @@ export const InterviewPin = ({
 }: InterviewPinProps) => {
   const navigate = useNavigate();
 
-  const [loading, setLoading] = useState(false);
-  const { userId } = useAuth();
+  const [] = useState(false);
+  useAuth();
   return (
     <Card className="p-4 rounded-md shadow-none hover:shadow-md shadow-gray-100 cursor-pointer transition-all space-y-4">
       <CardTitle className="text-lg">{interview?.position}</CardTitle>
